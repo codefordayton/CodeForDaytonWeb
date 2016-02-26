@@ -1,0 +1,39 @@
+{
+    "name": "CodeForDaytonWeb",
+    "version": "1.0.0",
+    "description": "The Code for Dayton website",
+    "scripts": {
+        "clean": "rimraf \"build/*\"",
+        "deploy": "npm run dist; gulp publish",
+        "dist": "npm run clean && npm run js && npm run sass && npm run jekyll && gulp dist",
+        "jekyll": "jekyll build --source src --destination build",
+        "sass": "node-sass --include-path src/sass --include-path node_modules/bootstrap-sass/assets/stylesheets src/sass/main.scss src/styles/site.css",
+        "postsass": "postcss -r -c postcss.config.json src/styles/site.css && cssmin src/styles/site.css > src/styles/site.min.css",
+        "start": "npm run clean && parallelshell \"browser-sync start --config bs-config.js\" \"npm run watch\"",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch": "parallelshell \"npm run watch:jekyll\" \"npm run watch:sass\"",
+        "watch:jekyll": "nodemon -w src -e html,md,png,jpg,gif,yml,xml,js,css --ignore src/javascript --delay 1 -x \"npm run jekyll\"",
+        "watch:sass": "nodemon -e scss -w src/sass -x \"npm run sass\""
+    },
+    "dependencies": {
+        "bootstrap-sass": "^3.3.5",
+        "jquery": "^2.1.4"
+    },
+    "devDependencies": {
+        "autoprefixer": "^6.0.3",
+        "browser-sync": "*",
+        "cssmin": "^0.4.3",
+        "del": "^2.2.0",
+        "gulp": "^3.9.0",
+        "gulp-awspublish": "^3.0.1",
+        "http-proxy-middleware": "^0.9.0",
+        "moment": "^2.10.6",
+        "node-sass": "^3.3.3",
+        "nodemon": "^1.7.2",
+        "parallelshell": "^2.0.0",
+        "postcss-cli": "^2.2.0",
+        "rimraf": "^2.4.3",
+        "script-loader": "^0.6.1",
+        "sync-exec": "^0.6.2"
+    }
+}
