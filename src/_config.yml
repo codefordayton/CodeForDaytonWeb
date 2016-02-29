@@ -8,7 +8,7 @@
 # Site settings
 title: Code for Dayton | A Code for America Brigade
 email: dave.e.best@gmail.com
-description: We are a local chapter of Code for America Brigade supporting civic hacking in Dayton, Ohio.
+description: Dayton locals helping to open data and create meaningful web and mobile apps
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.codefordayton.org" # the base hostname & protocol for your site
 twitter_username: jekyllrb
