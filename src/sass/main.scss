@@ -4,10 +4,12 @@
 //@import 'bootstrap';
 
 // Legacy styles from old site
-@import 'legacy';
-@import 'memberbox';
+//@import 'legacy';
+//@import 'memberbox';
 
-// @import 'defaults/colors',
-//         'defaults/tags',
-//         'components/navbar',
-//         'pages/main'
+@import 'defaults/colors',
+        'defaults/tags',
+        'defaults/typography',
+        'components/header',
+        'components/navbar',
+        'pages/index'

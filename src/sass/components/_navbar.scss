@@ -1,0 +1,15 @@
+/**
+ * Most styles for the navbar are from bootstrap. Custom elements can go
+ * in here though.
+ */
+
+.navbar {
+    border: none;
+    box-shadow: 0 0 27px #000;
+    font-family: $font-body;
+    font-size: 14px;
+}
+
+.navbar-brand > img {
+    height: 27px;
+}
