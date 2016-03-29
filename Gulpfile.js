@@ -10,6 +10,10 @@ var moment      = require('moment');
 var os          = require('os');
 var pkg         = require('./package.json');
 
+gulp.task('copyfonts', function() {
+    console.log('Copying bootstrap fonts...');
+    gulp.src('node_modules/bootstrap-sass/assets/fonts/**/*').pipe(gulp.dest('src/fonts/'));
+});
 
 gulp.task('dist', function() {
     console.log('Running dist task...');

@@ -7,6 +7,7 @@
         "deploy": "npm run dist; gulp publish",
         "dist": "npm run clean && npm run js && npm run sass && npm run jekyll && gulp dist",
         "jekyll": "jekyll build --source src --destination build",
+        "presass": "gulp copyfonts",
         "sass": "node-sass --include-path src/sass --include-path node_modules/bootstrap-sass/assets/stylesheets src/sass/main.scss src/styles/site.css",
         "postsass": "postcss -r -c postcss.config.json src/styles/site.css && cssmin src/styles/site.css > src/styles/site.min.css",
         "start": "npm run clean && parallelshell \"browser-sync start --config bs-config.js\" \"npm run watch\"",
