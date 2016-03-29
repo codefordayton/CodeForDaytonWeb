@@ -2,12 +2,12 @@ $font-heading: Georgia, Times, "Times New Roman", serif;
 $font-body: "Interstate", "Gotham A", "Gotham B", "Open Sans Regular", "Verdana", "Helvetica", "Arial", "sans-serif";
 
 body {
-    font-family: $font-body;
+    //font-family: $font-body;
     font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: $font-heading;
+    //font-family: $font-body;
     font-weight: bold;
 }
 
