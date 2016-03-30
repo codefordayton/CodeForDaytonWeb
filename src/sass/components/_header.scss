@@ -9,6 +9,15 @@
     width: 100%;
 }
 
+.header-btn {
+    color: #f3f3f3;
+    background-color: $color-cfd;
+}
+.header-btn:hover {
+    color: #ffffff;
+    background-color: $color-cfd-alt;
+}
+
 .header-caption {
     background-color: rgba(0,0,0,0.75);
     border-radius: 5px;
@@ -16,11 +25,15 @@
     max-width: 768px;
     padding: 1.5em;
     text-align: left;
-    text-shadow: 1px 1px 0 #000;
 
     h1 {
         margin-top: 0;
     }
+}
+
+.header-icon {
+    height: 32px;
+    width: 32px;
 }
 
 .carousel-caption h1,

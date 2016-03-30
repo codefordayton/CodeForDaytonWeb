@@ -1,6 +1,9 @@
 
-.content {
-    padding-right: 4.0em;
+.main-content {
+
+    @media(min-width: $screen-lg-min) {
+        padding-right: 4.0em;
+    }
 }
 
 .featurette {
