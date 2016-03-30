@@ -16,3 +16,8 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+
+jekyll_get:
+  - data: meetups
+    json: 'https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=Code-For-Dayton&page=20'
+    cache: true
