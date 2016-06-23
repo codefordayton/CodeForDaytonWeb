@@ -40,7 +40,7 @@ $.ajax({
                 		"<td "  +  ">" + results[i].name + "</td>" + 
                 		"<td>" + date.toDateString("MMM dd yy") +" at " + getTime(date)+ "</td>" +
                 		"<td>" + "<a href = '" + gmap + venueLatLon + getCenter(venueLatLon) + "' target='_blank'>" + getPlace(venue) +"</a>" + "</td>" +
-                		"<td>" + "<a href= '" + results[i].event_url + "' target='_blank'> Join this Meetup! </a>" + "</td>" +
+                		"<td>" + "<a href= '" + results[i].event_url + "' target='_blank'> Join Us! </a>" + "</td>" +
                 		"<td>" + results[i].yes_rsvp_count+"</td>" +
                 		"</tr>";
             }
