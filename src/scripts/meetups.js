@@ -26,7 +26,7 @@ $.ajax({
  						output += "<th>Name</th>";
  						output += "<th>Date</th>";
  						output += "<th>Place</th>";
- 						output += "<th>Meetup URL</th>";
+ 						output += "<th>Meetup</th>";
  						output += "<th>Volunteers Coming</th>";
  				output += "</tr>";
  				
@@ -39,8 +39,8 @@ $.ajax({
                 output+="<tr" + (i===0?"class='active'":"") + ">" + 
                 		"<td "  +  ">" + results[i].name + "</td>" + 
                 		"<td>" + date.toDateString("MMM dd yy") +" at " + getTime(date)+ "</td>" +
-                		"<td>" + "<a href = '" + gmap + venueLatLon + getCenter(venueLatLon) + "' target='_blank'>" + getPlace(venue) +"</a>" + "</td>" +
-                		"<td>" + "<a href= '" + results[i].event_url + "' target='_blank'> Join Us! </a>" + "</td>" +
+                		"<td>" + "<a href = '" + gmap + getAddress(venue) + getCenter(venueLatLon) + "' target='_blank'>" + getNameAndAddress(venue) +"</a>" + "</td>" +
+                		"<td>" + "<a href= '" + results[i].event_url + "' target='_blank'> Sign Up/In! </a>" + "</td>" +
                 		"<td>" + results[i].yes_rsvp_count+"</td>" +
                 		"</tr>";
             }
@@ -75,8 +75,11 @@ var getTime = function (date) {
 	result += ":" + date.getMinutes() + " " + meridian;
 	return result;
 }
+var getAddress = function (venue) {
+	return venue.address_1 + ", " + venue.city + ", " + venue.state;
+}
 
-var getPlace = function(venue){
-	var result = venue.name + ", " + venue.address_1 + ", " + venue.city + ", " + venue.state;
+var getNameAndAddress = function(venue){
+	var result = venue.name + ", " + getAddress(venue);
 	return result;
 }
