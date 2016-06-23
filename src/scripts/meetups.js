@@ -14,20 +14,51 @@ $.ajax({
   dataType: 'jsonp',
   success: function (data) {
   	var results = data.results;
-    console.log(results);
+ //   console.log(results);
     
-            var output="<dl>";
- 
-             for (var i in results) {
+            var output="<table class='table table-striped table-hover'>";
+ 				output += "<tr>";
+ 						output += "<th>Name</th>";
+ 						output += "<th>Date</th>";
+ 						output += "<th>Place</th>";
+ 						output += "<th>Meetup URL</th>";
+ 						output += "<th>Volunteers Coming</th>";
+ 				output += "</tr>";
+ 				
+ 	             for (var i in results) {
              	var date = new Date(results[i].time);
              	
-                output+="<dd>" + results[i].name + ",  " + date.toString("MMM dd yy") + ",  " + getPlace(results[i].venue) + ", <a href= '" + results[i].event_url + "'> Join the Meetup! </a>, " + results[i].description + ", " + results[i].yes_rsvp_count + " Volunteers so far!</dd>";
+                output+="<tr" + (i===0?"class='active'":"") + ">" + 
+                		"<td "  +  ">" + results[i].name + "</td>" + 
+                		"<td>" + date.toDateString("MMM dd yy") +" at " + getTime(date)+ "</td>" +
+                		"<td>" + getPlace(results[i].venue) + "</td>" +
+                		"<td>" + "<a href= '" + results[i].event_url + "'> Join this Meetup! </a>" + "</td>" +
+                		"<td>" + results[i].yes_rsvp_count+"</td>" +
+                		"</tr>";
             }
-            output+="</dl>";
+            output+="</table>";
             
             document.getElementById("show-data").innerHTML = output;
   }
 });
+
+var getTime = function (date) {
+	var meridian = "pm";
+	
+	var result = date.getHours();
+	if(result === 0){
+		result = 12;
+		meridian = "am";
+	}
+	else if(result > 12)
+		result -= 12;
+   else {
+   		meridian = "am";
+   }
+		
+	result += ":" + date.getMinutes() + " " + meridian;
+	return result;
+}
 
 var getPlace = function(venue){
 	var result = venue.name + ", " + venue.address_1 + ", " + venue.city + ", " + venue.state;
