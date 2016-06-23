@@ -1,4 +1,9 @@
 var url ="https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=Code-For-Dayton&page=20";
+var daytonLatLon ="39.7589,-84.1916";
+var gmap = "http://maps.google.com/?ie=UTF8&hq=&z=15&&q=";
+
+// var gmap = "https://maps.googleapis.com/maps/api/staticmap?ie=UTF8&hq=&zoom=15&maptype=roadmap&size=400x400&markers=color:blue%7C"; -- needs API Key!
+
 var data;
 
 $.ajax({
@@ -14,7 +19,7 @@ $.ajax({
   dataType: 'jsonp',
   success: function (data) {
   	var results = data.results;
- //   console.log(results);
+    console.log(results);
     
             var output="<table class='table table-striped table-hover'>";
  				output += "<tr>";
@@ -27,12 +32,15 @@ $.ajax({
  				
  	             for (var i in results) {
              	var date = new Date(results[i].time);
-             	
+             	var venue = results[i].venue;
+             	var venueLatLon = getLatLon(venue);
+             	//var mapcenter = "&center="+venueLatLon;
+
                 output+="<tr" + (i===0?"class='active'":"") + ">" + 
                 		"<td "  +  ">" + results[i].name + "</td>" + 
                 		"<td>" + date.toDateString("MMM dd yy") +" at " + getTime(date)+ "</td>" +
-                		"<td>" + getPlace(results[i].venue) + "</td>" +
-                		"<td>" + "<a href= '" + results[i].event_url + "'> Join this Meetup! </a>" + "</td>" +
+                		"<td>" + "<a href = '" + gmap + venueLatLon + getCenter(venueLatLon) + "' target='_blank'>" + getPlace(venue) +"</a>" + "</td>" +
+                		"<td>" + "<a href= '" + results[i].event_url + "' target='_blank'> Join this Meetup! </a>" + "</td>" +
                 		"<td>" + results[i].yes_rsvp_count+"</td>" +
                 		"</tr>";
             }
@@ -41,6 +49,14 @@ $.ajax({
             document.getElementById("show-data").innerHTML = output;
   }
 });
+
+var getCenter = function (latLon) {
+	return "&ll="+latLon;
+}
+
+var getLatLon = function (venue) {
+	return venue.lat+","+venue.lon;
+}
 
 var getTime = function (date) {
 	var meridian = "pm";
